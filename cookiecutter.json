@@ -1,0 +1,9 @@
+{
+  "project_name": "my-project",
+  "project_version": "0.0.1",
+  "project_description": "my-project is a python project.",
+  "author": "your name",
+  "email": "your@email.com",
+  "module_name": "app",
+  "python_version": "3.10"
+}

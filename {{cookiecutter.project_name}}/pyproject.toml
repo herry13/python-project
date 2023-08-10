@@ -1,0 +1,54 @@
+[tool.poetry]
+name = "{{ cookiecutter.project_name }}"
+version = "{{ cookiecutter.project_version }}"
+description = "{{ cookiecutter.project_description }}"
+authors = ["{{ cookiecutter.author }} <{{ cookiecutter.email }}>"]
+
+packages = [
+    { include = "app", from = "src" },
+]
+
+[tool.poetry.scripts]
+app-api = "app.api:main"
+
+[tool.poetry.dependencies]
+python = "~{{ cookiecutter.python_version }}"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.2.0"
+pytest-mock = "^3.7.0"
+pytest-cov = "^4.0.0"
+pytest-pylint = "^0.18.0"
+pytest-mypy = "^0.9.1"
+pytest-black = "^0.3.12"
+pytest-isort = "^3.0.0"
+mock = "^5.0.1"
+types-mock = "^5.0.0.5"
+taskipy = "^1.10.2"
+# chispa = "^0.9.2"
+
+[tool.taskipy.tasks]
+test = "pytest -x --ff -rN test/"
+test_report = "pytest --cache-clear -ra -v --cov src/ --cov-report term --cov-report html:cover_html test/"
+black = "black src/ test/"
+isort = "isort --atomic --profile=black src/ test/"
+format = "task isort && task black"
+check_format = "pytest -v --cache-clear --black --isort -m black -m isort src/ test/"
+lint = "pytest --pylint --cache-clear -m pylint -v src/"
+mypy = "pytest --mypy --cache-clear -m mypy -v src/ test/"
+all = "task mypy && task lint && task check_format && task test"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.coverage.run]
+omit = ["test/*", ".venv/*", "pipeline/.venv/*"]
+
+[tool.mypy]
+ignore_missing_imports = "True"
+check_untyped_defs = true
