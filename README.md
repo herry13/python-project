@@ -9,3 +9,12 @@ This is a cookiecutter template of Python project that uses:
 - [pytest](https://docs.pytest.org) for running the tests
 - [taskipy](https://github.com/taskipy/taskipy) for task runner
 
+
+## How to use it
+
+Follow these steps to generate a Python project based on this template:
+
+1. Install [Cookiecutter](https://cookiecutter.readthedocs.io/en/stable/installation.html)
+
+2. Run `cookiecutter gh:herry13/python-project`
+
