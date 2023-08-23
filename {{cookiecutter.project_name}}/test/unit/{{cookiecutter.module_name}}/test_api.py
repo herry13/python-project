@@ -1,4 +1,4 @@
-from {{ cookiecutter.module_name }}.api import main
+from {{ cookiecutter.module_name }}.app import main
 
 
 def test_main(capsys):
