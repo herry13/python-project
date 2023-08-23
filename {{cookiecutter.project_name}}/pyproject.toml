@@ -5,11 +5,11 @@ description = "{{ cookiecutter.project_description }}"
 authors = ["{{ cookiecutter.author }} <{{ cookiecutter.email }}>"]
 
 packages = [
-    { include = "app", from = "src" },
+    { include = "{{ cookiecutter.module_name }}", from = "src" },
 ]
 
 [tool.poetry.scripts]
-app-api = "app.api:main"
+{{ cookiecutter.module_name }}-api = "{{ cookiecutter.module_name }}.api:main"
 
 [tool.poetry.dependencies]
 python = "~{{ cookiecutter.python_version }}"
